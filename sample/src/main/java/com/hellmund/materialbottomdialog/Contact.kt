@@ -10,7 +10,7 @@ data class Contact(
     val lastName: String
 ) : Actionable {
 
-    override fun getOptionsActions(): List<Action> {
+    override fun getActions(): List<Action> {
         return listOf(
             EnabledAction("Add to favorites", R.drawable.ic_outline_favorite_24px),
             EnabledAction("Edit", R.drawable.ic_outline_edit_24px)

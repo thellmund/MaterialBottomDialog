@@ -41,9 +41,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
             orientation = LinearLayout.VERTICAL
         }
 
-        // TODO: Background color
-        // TODO: Nav bar color and nav bar button color
-
         val itemsContainer = LinearLayout(context).apply {
             layoutParams = FrameLayout.LayoutParams(
                 MATCH_PARENT,
@@ -60,7 +57,7 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         actions.forEach { action ->
             tintColor?.let { action.tintColor = it }
             val index = contentView.childCount
-            val view = action.getListItemView(requireContext()).apply {
+            val view = action.buildListItemView(requireContext()).apply {
                 setOnClickListener { handleDialogItemClick(index) }
             }
             itemsContainer.addView(view)

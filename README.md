@@ -53,7 +53,7 @@ Optional: You can implement `Actionable` on data objects on which users can perf
 ```
 // Contact.kt
 data class Contact(val firstName: String, val lastName: String) : Actionable {
-  override fun getOptionsActions(): List<Action> {
+  override fun getActions(): List<Action> {
     return listOf(
       EnabledAction("Add to favorites", R.drawable.ic_favorite),
       EnabledAction("Edit", R.drawable.ic_edit)
@@ -62,8 +62,8 @@ data class Contact(val firstName: String, val lastName: String) : Actionable {
 }
 
 // MainActivity.kt
-val contact = Contact("Till", "Hellmund")
-MaterialBottomDialog.make(this, R.style.AppTheme_Dark)
+val contact = Contact("Richard", "Hendricks")
+MaterialBottomDialog.make(this)
   .with(contact)
   .onSelected { /* ... */ }
   .onDismiss { /* ... */ }

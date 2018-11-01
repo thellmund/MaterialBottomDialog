@@ -18,7 +18,7 @@ abstract class Action(
 
     var tintColor: Int? = null
 
-    fun getListItemView(context: Context): View {
+    fun buildListItemView(context: Context): View {
         val itemView = View.inflate(context, R.layout.list_item_bottom_dialog, null).apply {
             textView.text = getActionText(context)
             imageView.imageDrawable = getActionIcon(context)

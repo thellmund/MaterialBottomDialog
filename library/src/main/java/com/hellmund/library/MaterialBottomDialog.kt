@@ -25,7 +25,7 @@ class MaterialBottomDialog(
     }
 
     fun with(actionable: Actionable): MaterialBottomDialog {
-        return with(actionable.getOptionsActions())
+        return with(actionable.getActions())
     }
 
     fun setDisplayDragIndicator(showDragIndicator: Boolean): MaterialBottomDialog {
