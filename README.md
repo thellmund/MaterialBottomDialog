@@ -5,6 +5,8 @@ This library provides an implementation of [Material Design’s bottom sheets](h
 * Supports customization via themes
 * Optimized for both Java and Kotlin
 
+![](images/screenshot.png)
+
 Usage
 ---------
 1. Add the JitPack repository to your project-level `build.gradle` file and the dependency to your app-level `build.gradle` file.
