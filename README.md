@@ -50,7 +50,7 @@ Actionable
 ---------
 
 Optional: You can implement `Actionable` on data objects on which users can perform actions.
-```
+```groovy
 // Contact.kt
 data class Contact(val firstName: String, val lastName: String) : Actionable {
   override fun getActions(): List<Action> {
