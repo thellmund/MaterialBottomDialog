@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="?attr/dialogBackground" />
+    <corners
+        android:topLeftRadius="@dimen/material_card_corner_radius"
+        android:topRightRadius="@dimen/material_card_corner_radius" />
+</shape>
