@@ -23,7 +23,7 @@ allprojects {
 implementation 'com.github.thellmund:MaterialBottomDialog:0.5'
 ```
 2. Add these attributes to your theme.
-```groovy
+```xml
 <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
  <!-- Attributes for MaterialBottomDialog -->
  <item name="dialogBackground">@color/defaultWindowBackground</item>
@@ -33,7 +33,7 @@ implementation 'com.github.thellmund:MaterialBottomDialog:0.5'
 ```
 
 3. Use it in your app.
-```groovy
+```kotlin
 val actions = listOf(
   EnabledAction("Option 1"),
   DisabledAction("Option 2")
@@ -50,7 +50,7 @@ Actionable
 ---------
 
 Optional: You can implement `Actionable` on data objects on which users can perform actions.
-```groovy
+```kotlin
 // Contact.kt
 data class Contact(val firstName: String, val lastName: String) : Actionable {
   override fun getActions(): List<Action> {
