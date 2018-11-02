@@ -1,5 +1,5 @@
 # Change log
 
-## Version 0.5
-*(2018-11-03)*
+## Version 1.0
+*(2018-11-02)*
 - Initial release 🎉
