@@ -21,6 +21,8 @@
         <item name="colorPrimaryDark">@color/darkModeColorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="android:navigationBarColor">@color/darkModeBackground</item>
+
         <!-- Attributes for MaterialBottomDialog -->
         <item name="dialogSheetBackground">@color/darkModeBackground</item>
         <item name="dialogSheetTintColor">@android:color/white</item>

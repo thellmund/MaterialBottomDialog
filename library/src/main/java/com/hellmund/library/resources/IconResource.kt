@@ -10,7 +10,8 @@ sealed class IconResource {
 
     data class Drawable(val drawable: AndroidDrawable?) : IconResource()
     data class Bitmap(val bitmap: AndroidBitmap?) : IconResource()
-    data class ID(val value: Int) : IconResource()
+    data class ImageURL(val url: String) : IconResource()
+    data class ID(val id: Int) : IconResource()
 
     companion object {
 
@@ -22,6 +23,9 @@ sealed class IconResource {
 
         @JvmStatic
         fun from(bitmap: AndroidBitmap?) = IconResource.Bitmap(bitmap)
+
+        @JvmStatic
+        fun from(url: String) = IconResource.ImageURL(url)
 
     }
 

@@ -6,8 +6,9 @@ import com.hellmund.library.resources.LabelResource
 
 class EnabledAction private constructor(
     labelResource: LabelResource,
-    iconResource: IconResource? = null
-) : Action(labelResource, iconResource) {
+    iconResource: IconResource? = null,
+    tintColor: Int? = null
+) : Action(labelResource, iconResource, tintColor) {
 
     constructor(label: String, icon: Drawable? = null) : this(
         LabelResource.from(label),
@@ -28,5 +29,9 @@ class EnabledAction private constructor(
         LabelResource.from(labelResId),
         IconResource.from(icon)
     )
+
+    override fun copy(labelResource: LabelResource?, iconResource: IconResource?, tintColor: Int?): Action {
+        return EnabledAction(labelResource ?: this.labelResource, iconResource ?: this.iconResource, tintColor ?: this.tintColor)
+    }
 
 }

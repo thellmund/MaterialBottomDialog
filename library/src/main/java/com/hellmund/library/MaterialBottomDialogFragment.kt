@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
 import com.hellmund.library.actions.Action
+import com.hellmund.library.actions.ActionInflater
 import kotlinx.android.synthetic.main.bottom_sheet_title.view.*
 
 class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
@@ -26,23 +27,9 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
     private var tintColor: Int? = null
     private var dialogTheme: Int? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Needed
-        /*
-        dialogTheme?.let {
-            setStyle(BottomSheetDialogFragment.STYLE_NORMAL, it)
-        }
-        */
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val contentView = LinearLayout(context).apply {
-            layoutParams = FrameLayout.LayoutParams(
-                MATCH_PARENT,
-                WRAP_CONTENT
-            )
+            layoutParams = FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             orientation = LinearLayout.VERTICAL
         }
 
@@ -59,21 +46,16 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         }
 
         val itemsContainer = LinearLayout(context).apply {
-            layoutParams = FrameLayout.LayoutParams(
-                MATCH_PARENT,
-                WRAP_CONTENT
-            )
+            layoutParams = FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             orientation = LinearLayout.VERTICAL
         }
 
-        actions.forEach { action ->
-            tintColor?.let { action.tintColor = it }
-            val index = contentView.childCount
-            val view = action.buildListItemView(requireContext()).apply {
-                setOnClickListener { handleDialogItemClick(index) }
-            }
-            itemsContainer.addView(view)
-        }
+        val actionInflater = ActionInflater(requireContext())
+
+        actions
+            .map { it.copy(tintColor = this.tintColor) }
+            .mapIndexed { index, action -> actionInflater.inflate(action, index, this::handleDialogItemClick) }
+            .forEach { itemsContainer.addView(it) }
 
         val scrollView = NestedScrollView(requireContext()).apply {
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
