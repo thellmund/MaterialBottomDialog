@@ -2,7 +2,6 @@ package com.hellmund.library
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialogFragment
 import android.support.v4.widget.NestedScrollView
 import android.view.LayoutInflater
 import android.view.View
@@ -31,9 +30,11 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         super.onCreate(savedInstanceState)
 
         // TODO: Needed
+        /*
         dialogTheme?.let {
             setStyle(BottomSheetDialogFragment.STYLE_NORMAL, it)
         }
+        */
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

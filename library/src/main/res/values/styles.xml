@@ -12,9 +12,9 @@
 
     <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
         <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">?attr/dialogBackground</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?attr/dialogLightNavigationBar</item>
-        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?attr/dialogBackground</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">?attr/dialogSheetBackground</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?attr/dialogSheetLightNavigationBar</item>
+        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?attr/dialogSheetBackground</item>
     </style>
 
     <style name="BottomDialogItem">
@@ -27,7 +27,7 @@
     </style>
 
     <style name="BottomDialogItemIcon">
-        <item name="android:tint">?attr/dialogTintColor</item>
+        <item name="android:tint">?attr/dialogSheetTintColor</item>
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_marginEnd">@dimen/material_default_padding</item>
@@ -36,7 +36,7 @@
 
     <style name="BottomDialogItemLabel">
         <item name="android:alpha">0.87</item>
-        <item name="android:textColor">?attr/dialogTintColor</item>
+        <item name="android:textColor">?attr/dialogSheetTintColor</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
