@@ -2,18 +2,19 @@ package com.hellmund.library.actions
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import android.view.View
 import com.hellmund.library.R
 import com.hellmund.library.imageDrawable
-import com.hellmund.library.resources.DrawableResource
-import com.hellmund.library.resources.StringResource
+import com.hellmund.library.resources.IconResource
+import com.hellmund.library.resources.LabelResource
 import kotlinx.android.synthetic.main.list_item_bottom_dialog.view.*
 
 abstract class Action(
-    private val labelResource: StringResource,
-    private val iconResource: DrawableResource? = null
+    private val labelResource: LabelResource,
+    private val iconResource: IconResource? = null
 ) {
 
     var tintColor: Int? = null
@@ -35,15 +36,16 @@ abstract class Action(
 
     private fun getActionText(context: Context): String {
         return when (labelResource) {
-            is StringResource.Value -> labelResource.value
-            is StringResource.ID -> context.getString(labelResource.value)
+            is LabelResource.Value -> labelResource.value
+            is LabelResource.ID -> context.getString(labelResource.value)
         }
     }
 
     private fun getActionIcon(context: Context): Drawable? {
         return when (iconResource) {
-            is DrawableResource.Value -> iconResource.value
-            is DrawableResource.ID -> ContextCompat.getDrawable(context, iconResource.value)
+            is IconResource.Drawable -> iconResource.drawable
+            is IconResource.Bitmap -> BitmapDrawable(context.resources, iconResource.bitmap)
+            is IconResource.ID -> ContextCompat.getDrawable(context, iconResource.value)
             else -> null
         }
     }

@@ -2,5 +2,6 @@
 <resources>
     <attr name="dialogBackground" format="reference|color" />
     <attr name="dialogTintColor" format="reference|color" />
+    <attr name="dialogCornerRadius" format="integer" />
     <attr name="dialogLightNavigationBar" format="boolean" />
 </resources>
