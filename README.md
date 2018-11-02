@@ -28,7 +28,7 @@ implementation 'com.github.thellmund:MaterialBottomDialog:0.5'
  <!-- Attributes for MaterialBottomDialog -->
  <item name="dialogSheetBackground">@color/defaultWindowBackground</item>
  <item name="dialogSheetTintColor">@color/defaultTextColor</item>
- <item name="dialogSheetCornerRadius">8</item>
+ <item name="dialogSheetCornerRadius">@dimen/cornerRadius</item>
  <item name="dialogSheetLightNavigationBar">true</item>
 </style>
 ```
