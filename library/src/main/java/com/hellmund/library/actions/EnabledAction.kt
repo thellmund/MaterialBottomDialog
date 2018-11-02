@@ -4,6 +4,10 @@ import android.graphics.drawable.Drawable
 import com.hellmund.library.resources.IconResource
 import com.hellmund.library.resources.LabelResource
 
+/**
+ * This class is a subclass of [Action] and represents an action that is currently enabled. In contrast, [DisabledAction]
+ * can be used to show a currently disabled [Action].
+ */
 class EnabledAction private constructor(
     labelResource: LabelResource,
     iconResource: IconResource? = null,
@@ -29,9 +33,5 @@ class EnabledAction private constructor(
         LabelResource.from(labelResId),
         IconResource.from(icon)
     )
-
-    override fun copy(labelResource: LabelResource?, iconResource: IconResource?, tintColor: Int?): Action {
-        return EnabledAction(labelResource ?: this.labelResource, iconResource ?: this.iconResource, tintColor ?: this.tintColor)
-    }
 
 }

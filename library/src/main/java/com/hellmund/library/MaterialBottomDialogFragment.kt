@@ -23,8 +23,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
 
     private var showDragIndicator = false
     private var dialogTitle: String? = null
-    private var backgroundColor: Int? = null
-    private var tintColor: Int? = null
     private var dialogTheme: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,6 +37,10 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         }
 
         dialogTitle?.let { title ->
+            if (title.isBlank()) {
+                return@let
+            }
+
             val titleView = inflater.inflate(R.layout.bottom_sheet_title, contentView, false).apply {
                 textView.text = title
             }
@@ -53,7 +55,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         val actionInflater = ActionInflater(requireContext())
 
         actions
-            .map { it.copy(tintColor = this.tintColor) }
             .mapIndexed { index, action -> actionInflater.inflate(action, index, this::handleDialogItemClick) }
             .forEach { itemsContainer.addView(it) }
 
@@ -84,8 +85,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
             onCancelListener: (() -> Unit)? = null,
             showDragIndicator: Boolean = false,
             title: String? = null,
-            backgroundColor: Int? = null,
-            tintColor: Int? = null,
             theme: Int? = null
         ): MaterialBottomDialogFragment {
             return MaterialBottomDialogFragment().apply {
@@ -94,8 +93,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
                 this.onCancelListener = onCancelListener
                 this.showDragIndicator = showDragIndicator
                 this.dialogTitle = title
-                this.backgroundColor = backgroundColor
-                this.tintColor = tintColor
                 this.dialogTheme = theme
             }
         }

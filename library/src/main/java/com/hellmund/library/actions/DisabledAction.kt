@@ -5,6 +5,10 @@ import android.view.View
 import com.hellmund.library.resources.IconResource
 import com.hellmund.library.resources.LabelResource
 
+/**
+ * This class is a subclass of [Action] and represents an action that is currently disabled. It sets the alpha of the
+ * [Action]'s view to 0.5 and disables clicking.
+ */
 class DisabledAction(
     labelResource: LabelResource,
     iconResource: IconResource? = null,
@@ -30,10 +34,6 @@ class DisabledAction(
         LabelResource.from(labelResId),
         IconResource.from(icon)
     )
-
-    override fun copy(labelResource: LabelResource?, iconResource: IconResource?, tintColor: Int?): Action {
-        return DisabledAction(labelResource ?: this.labelResource, iconResource ?: this.iconResource, tintColor ?: this.tintColor)
-    }
 
     override fun onListItemInflated(itemView: View) = with(itemView) {
         alpha = 0.5f
