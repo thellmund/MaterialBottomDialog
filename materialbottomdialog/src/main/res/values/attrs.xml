@@ -2,6 +2,6 @@
 <resources>
     <attr name="dialogSheetBackground" format="reference|color" />
     <attr name="dialogSheetTintColor" format="reference|color" />
-    <attr name="dialogSheetCornerRadius" format="integer" />
+    <attr name="dialogSheetCornerRadius" format="dimension" />
     <attr name="dialogSheetLightNavigationBar" format="boolean" />
 </resources>
