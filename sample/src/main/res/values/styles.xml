@@ -13,6 +13,7 @@
         <item name="dialogBackground">@android:color/white</item>
         <item name="dialogTintColor">@android:color/primary_text_light</item>
         <item name="dialogLightNavigationBar">true</item>
+        <item name="dialogCornerRadius">@dimen/material_corner_radius</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat">
@@ -24,6 +25,7 @@
         <item name="dialogBackground">@color/darkModeBackground</item>
         <item name="dialogTintColor">@android:color/white</item>
         <item name="dialogLightNavigationBar">false</item>
+        <item name="dialogCornerRadius">@dimen/material_corner_radius</item>
     </style>
 
 </resources>

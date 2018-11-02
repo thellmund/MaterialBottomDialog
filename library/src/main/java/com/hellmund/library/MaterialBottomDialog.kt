@@ -15,6 +15,7 @@ class MaterialBottomDialog(
 
     private val actions = mutableListOf<Action>()
     private var showDragIndicator = false
+    private var title: String? = null
     private var backgroundColor: Int? = null
     private var tintColor: Int? = null
 
@@ -43,6 +44,15 @@ class MaterialBottomDialog(
         return this
     }
 
+    fun setTitle(titleResId: Int): MaterialBottomDialog {
+        return setTitle(activity.getString(titleResId))
+    }
+
+    fun setTitle(title: String): MaterialBottomDialog {
+        this.title = title
+        return this
+    }
+
     fun onSelected(callback: (Int) -> Unit): MaterialBottomDialog {
         onClickListener = callback
         return this
@@ -63,7 +73,7 @@ class MaterialBottomDialog(
 
     fun show() {
         val fragment = MaterialBottomDialogFragment.newInstance(
-            actions, onClickListener, onCancelListener, showDragIndicator, backgroundColor, tintColor, theme)
+            actions, onClickListener, onCancelListener, showDragIndicator, title, backgroundColor, tintColor, theme)
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 

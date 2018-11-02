@@ -10,6 +10,9 @@ data class Contact(
     val lastName: String
 ) : Actionable {
 
+    val fullName: String
+        get() = "$firstName $lastName"
+
     override fun getActions(): List<Action> {
         return listOf(
             EnabledAction("Add to favorites", R.drawable.ic_outline_favorite_24px),

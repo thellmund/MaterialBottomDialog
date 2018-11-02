@@ -3,6 +3,6 @@
     android:shape="rectangle">
     <solid android:color="?attr/dialogBackground" />
     <corners
-        android:topLeftRadius="@dimen/material_card_corner_radius"
-        android:topRightRadius="@dimen/material_card_corner_radius" />
+        android:topLeftRadius="?attr/dialogCornerRadius"
+        android:topRightRadius="?attr/dialogCornerRadius" />
 </shape>

@@ -42,6 +42,7 @@ class KotlinActivity : AppCompatActivity() {
 
         MaterialBottomDialog.make(this)
             .with(contact)
+            .setTitle(contact.fullName)
             .onSelected { Toast.makeText(this, "Selected item at index $it", Toast.LENGTH_SHORT).show() }
             .onDismiss { Toast.makeText(this, "Dismissed bottom dialog", Toast.LENGTH_SHORT).show() }
             .show()

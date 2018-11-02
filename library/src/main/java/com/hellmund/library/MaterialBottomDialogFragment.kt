@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
 import com.hellmund.library.actions.Action
+import kotlinx.android.synthetic.main.bottom_sheet_title.view.*
 
 class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
 
@@ -21,12 +22,15 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
     private var onCancelListener: (() -> Unit)? = null
 
     private var showDragIndicator = false
+    private var dialogTitle: String? = null
     private var backgroundColor: Int? = null
     private var tintColor: Int? = null
     private var dialogTheme: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // TODO: Needed
         dialogTheme?.let {
             setStyle(BottomSheetDialogFragment.STYLE_NORMAL, it)
         }
@@ -41,17 +45,24 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
             orientation = LinearLayout.VERTICAL
         }
 
+        if (showDragIndicator) {
+            val dragIndicatorView = inflater.inflate(R.layout.bottom_sheet_drag_indicator, contentView, false)
+            contentView.addView(dragIndicatorView)
+        }
+
+        dialogTitle?.let { title ->
+            val titleView = inflater.inflate(R.layout.bottom_sheet_title, contentView, false).apply {
+                textView.text = title
+            }
+            contentView.addView(titleView)
+        }
+
         val itemsContainer = LinearLayout(context).apply {
             layoutParams = FrameLayout.LayoutParams(
                 MATCH_PARENT,
                 WRAP_CONTENT
             )
             orientation = LinearLayout.VERTICAL
-        }
-
-        if (showDragIndicator) {
-            val dragIndicator = inflater.inflate(R.layout.bottom_sheet_drag_indicator, contentView, false)
-            contentView.addView(dragIndicator)
         }
 
         actions.forEach { action ->
@@ -89,6 +100,7 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
             onClickListener: ((Int) -> Unit)? = null,
             onCancelListener: (() -> Unit)? = null,
             showDragIndicator: Boolean = false,
+            title: String? = null,
             backgroundColor: Int? = null,
             tintColor: Int? = null,
             theme: Int? = null
@@ -98,6 +110,7 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
                 this.onClickListener = onClickListener
                 this.onCancelListener = onCancelListener
                 this.showDragIndicator = showDragIndicator
+                this.dialogTitle = title
                 this.backgroundColor = backgroundColor
                 this.tintColor = tintColor
                 this.dialogTheme = theme
