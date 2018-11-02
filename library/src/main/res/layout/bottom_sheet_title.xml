@@ -3,13 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/material_default_padding">
+    android:paddingStart="@dimen/material_default_padding"
+    android:paddingTop="@dimen/material_default_padding"
+    android:paddingEnd="@dimen/material_default_padding"
+    android:paddingBottom="@dimen/material_small_padding">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0.56"
+        android:textSize="15sp"
         tools:text="Lorem ipsum" />
 
 </FrameLayout>
