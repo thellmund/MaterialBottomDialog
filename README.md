@@ -20,7 +20,7 @@ allprojects {
 }
 
 // build.gradle (app-level)
-implementation 'com.github.thellmund:MaterialBottomDialog:0.5'
+implementation 'com.github.thellmund:MaterialBottomDialog:1.0'
 ```
 2. Add these attributes to your theme.
 ```xml
