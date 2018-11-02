@@ -26,9 +26,10 @@ implementation 'com.github.thellmund:MaterialBottomDialog:0.5'
 ```xml
 <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
  <!-- Attributes for MaterialBottomDialog -->
- <item name="dialogBackground">@color/defaultWindowBackground</item>
- <item name="dialogTintColor">@color/defaultTextColor</item>
- <item name="dialogLightNavigationBar">true</item>
+ <item name="dialogSheetBackground">@color/defaultWindowBackground</item>
+ <item name="dialogSheetTintColor">@color/defaultTextColor</item>
+ <item name="dialogSheetCornerRadius">8</item>
+ <item name="dialogSheetLightNavigationBar">true</item>
 </style>
 ```
 
