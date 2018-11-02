@@ -12,11 +12,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         openLightMode.setOnClickListener {
-            startActivity(Intent(this, KotlinActivity::class.java))
+            startActivity(Intent(this, LightModeActivity::class.java))
         }
 
         openDarkMode.setOnClickListener {
-            startActivity(Intent(this, JavaActivity::class.java))
+            startActivity(Intent(this, DarkModeActivity::class.java))
         }
     }
 

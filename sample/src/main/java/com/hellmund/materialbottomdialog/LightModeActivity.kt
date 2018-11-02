@@ -7,13 +7,13 @@ import android.widget.Toast
 import com.hellmund.library.MaterialBottomDialog
 import com.hellmund.library.actions.DisabledAction
 import com.hellmund.library.actions.EnabledAction
-import kotlinx.android.synthetic.main.activity_kotlin.*
+import kotlinx.android.synthetic.main.activity_light_mode.*
 
-class KotlinActivity : AppCompatActivity() {
+class LightModeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kotlin)
+        setContentView(R.layout.activity_light_mode)
 
         showDialogWithActionsButton.setOnClickListener {
             showDialogWithActions()
@@ -30,7 +30,7 @@ class KotlinActivity : AppCompatActivity() {
             DisabledAction("Disabled option", null)
         )
 
-        MaterialBottomDialog.make(this, R.style.AppTheme_Dark)
+        MaterialBottomDialog.make(this)
             .with(actions)
             .onSelected { Toast.makeText(this, "Selected item at index $it", Toast.LENGTH_SHORT).show() }
             .onDismiss { Toast.makeText(this, "Dismissed bottom dialog", Toast.LENGTH_SHORT).show() }

@@ -19,14 +19,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".KotlinActivity"
+            android:name=".LightModeActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".JavaActivity"
+            android:name=".DarkModeActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.Dark">
             <meta-data

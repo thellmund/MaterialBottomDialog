@@ -15,12 +15,12 @@ import java.util.List;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class JavaActivity extends AppCompatActivity {
+public class DarkModeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_java);
+        setContentView(R.layout.activity_dark_mode);
 
         AppCompatButton showWithActionButton = findViewById(R.id.showDialogWithActionsButton);
         showWithActionButton.setOnClickListener(view -> showDialogWithActions());
