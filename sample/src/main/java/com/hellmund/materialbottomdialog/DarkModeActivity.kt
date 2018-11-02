@@ -1,3 +1,3 @@
 package com.hellmund.materialbottomdialog
 
-class LightModeActivity : BaseActivity()
+class DarkModeActivity : BaseActivity()
