@@ -2,6 +2,7 @@ package com.hellmund.library.actions
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.support.v4.widget.ImageViewCompat
 import android.view.View
 import android.widget.ImageView
 import com.hellmund.library.R
@@ -27,14 +28,18 @@ class ActionInflater(private val context: Context) {
      * @param onClick The function to invoke when the [View] is clicked
      * @return The [View] representing the provided [Action]
      */
-    fun inflate(action: Action, position: Int, onClick: (Int) -> Unit): View {
+    fun inflate(action: Action, position: Int, preserveIconSpace: Boolean, onClick: (Int) -> Unit): View {
         val itemView = View.inflate(context, R.layout.list_item_bottom_dialog, null).apply {
             textView.text = getActionText(context, action)
             setActionIcon(imageView, action)
 
             action.tintColor?.let {
                 textView.setTextColor(it)
-                imageView.imageTintList = ColorStateList.valueOf(it)
+                ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(it))
+            }
+
+            if (!preserveIconSpace) {
+                imageView.visibility = View.GONE
             }
 
             setOnClickListener {

@@ -14,6 +14,10 @@ class EnabledAction private constructor(
     tintColor: Int? = null
 ) : Action(labelResource, iconResource, tintColor) {
 
+    constructor(label: String) : this(LabelResource.from(label), null)
+
+    constructor(labelResId: Int) : this(LabelResource.from(labelResId))
+
     constructor(label: String, icon: Drawable? = null) : this(
         LabelResource.from(label),
         IconResource.from(icon)

@@ -18,6 +18,9 @@ abstract class Action(
     val tintColor: Int? = null
 ) {
 
+    val hasIcon: Boolean
+        get() = iconResource != null
+
     open fun onListItemInflated(itemView: View) {
         // Free ad space
     }

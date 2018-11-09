@@ -58,8 +58,8 @@ abstract class BaseActivity : AppCompatActivity(), ContactsAdapter.OnContactSele
 
     private fun openOptions() {
         val actions = listOf(
-            EnabledAction(R.string.remove_all, null),
-            DisabledAction(R.string.settings, null)
+            EnabledAction(R.string.remove_all),
+            DisabledAction(R.string.settings)
         )
 
         MaterialBottomDialog.make(this)

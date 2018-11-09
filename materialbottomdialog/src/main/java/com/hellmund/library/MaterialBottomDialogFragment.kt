@@ -53,9 +53,12 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         }
 
         val actionInflater = ActionInflater(requireContext())
+        val preserveIconSpace = actions.any { it.hasIcon }
 
         actions
-            .mapIndexed { index, action -> actionInflater.inflate(action, index, this::handleDialogItemClick) }
+            .mapIndexed { index, action ->
+                actionInflater.inflate(action, index, preserveIconSpace, this::handleDialogItemClick)
+            }
             .forEach { itemsContainer.addView(it) }
 
         val scrollView = NestedScrollView(requireContext()).apply {

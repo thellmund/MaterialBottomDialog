@@ -21,10 +21,10 @@ sealed class IconResource {
         fun from(resId: Int = 0) = IconResource.ID(resId)
 
         @JvmStatic
-        fun from(drawable: android.graphics.drawable.Drawable?) = IconResource.IconDrawable(drawable)
+        fun from(drawable: Drawable?) = drawable?.let { IconResource.IconDrawable(drawable) }
 
         @JvmStatic
-        fun from(bitmap: Bitmap?) = IconResource.IconBitmap(bitmap)
+        fun from(bitmap: Bitmap?) = bitmap?.let { IconResource.IconBitmap(bitmap) }
 
         @JvmStatic
         fun from(url: String) = IconResource.ImageURL(url)
