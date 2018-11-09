@@ -12,6 +12,8 @@ import com.hellmund.library.resources.LabelResource
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_bottom_dialog.view.*
 
+
+
 /**
  * This class is responsible for inflating an [Action] into the final [com.hellmund.library.MaterialBottomDialog].
  *
@@ -44,7 +46,9 @@ class ActionInflater(private val context: Context) {
             // Only apply the theme's icon tint if the icon is not loaded from a URI
             val isUriResource = action.iconResource is IconResource.ImageURL
             if (action.iconTintColor == null && isUriResource.not()) {
-                ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(R.attr.dialogSheetIconTintColor))
+                val a = context.theme.obtainStyledAttributes(intArrayOf(R.attr.dialogSheetIconTintColor))
+                ImageViewCompat.setImageTintList(imageView, a.getColorStateList(0))
+                a.recycle()
             }
 
             if (!preserveIconSpace) {
