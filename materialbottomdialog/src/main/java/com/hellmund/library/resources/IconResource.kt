@@ -2,6 +2,7 @@ package com.hellmund.library.resources
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.net.Uri
 
 /**
  * This class represents any resource that can be used to display an icon. As of now, this includes a [Drawable],
@@ -27,7 +28,7 @@ sealed class IconResource {
         fun from(bitmap: Bitmap?) = bitmap?.let { IconResource.IconBitmap(bitmap) }
 
         @JvmStatic
-        fun from(url: String) = IconResource.ImageURL(url)
+        fun from(uri: Uri) = IconResource.ImageURL(uri.toString())
 
     }
 

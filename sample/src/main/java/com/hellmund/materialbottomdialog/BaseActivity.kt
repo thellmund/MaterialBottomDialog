@@ -1,5 +1,6 @@
 package com.hellmund.materialbottomdialog
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
@@ -58,7 +59,7 @@ abstract class BaseActivity : AppCompatActivity(), ContactsAdapter.OnContactSele
 
     private fun openOptions() {
         val actions = listOf(
-            EnabledAction(R.string.remove_all),
+            EnabledAction(R.string.remove_all, IMAGE_URI),
             DisabledAction(R.string.settings)
         )
 
@@ -67,6 +68,10 @@ abstract class BaseActivity : AppCompatActivity(), ContactsAdapter.OnContactSele
             .onSelected { Toast.makeText(this, "Selected item at index $it", Toast.LENGTH_SHORT).show() }
             .onDismiss { Toast.makeText(this, "Dismissed bottom dialog", Toast.LENGTH_SHORT).show() }
             .show()
+    }
+
+    companion object {
+        private val IMAGE_URI = Uri.parse("https://avatars3.githubusercontent.com/u/11819826?s=460&v=4")
     }
 
 }

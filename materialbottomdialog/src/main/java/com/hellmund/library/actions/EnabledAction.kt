@@ -1,6 +1,8 @@
 package com.hellmund.library.actions
 
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import com.hellmund.library.resources.IconResource
 import com.hellmund.library.resources.LabelResource
 
@@ -14,18 +16,28 @@ class EnabledAction private constructor(
     tintColor: Int? = null
 ) : Action(labelResource, iconResource, tintColor) {
 
-    constructor(label: String) : this(LabelResource.from(label), null)
+    constructor(label: String) : this(LabelResource.from(label))
 
     constructor(labelResId: Int) : this(LabelResource.from(labelResId))
+
+    constructor(label: String, iconResId: Int = 0) : this(
+        LabelResource.from(label),
+        IconResource.from(iconResId)
+    )
 
     constructor(label: String, icon: Drawable? = null) : this(
         LabelResource.from(label),
         IconResource.from(icon)
     )
 
-    constructor(label: String, iconResId: Int = 0) : this(
+    constructor(label: String, icon: Bitmap? = null) : this(
         LabelResource.from(label),
-        IconResource.from(iconResId)
+        IconResource.from(icon)
+    )
+
+    constructor(label: String, uri: Uri) : this(
+        LabelResource.from(label),
+        IconResource.from(uri)
     )
 
     constructor(labelResId: Int, iconResId: Int = 0) : this(
@@ -36,6 +48,16 @@ class EnabledAction private constructor(
     constructor(labelResId: Int, icon: Drawable? = null) : this(
         LabelResource.from(labelResId),
         IconResource.from(icon)
+    )
+
+    constructor(labelResId: Int, icon: Bitmap? = null) : this(
+        LabelResource.from(labelResId),
+        IconResource.from(icon)
+    )
+
+    constructor(labelResId: Int, uri: Uri) : this(
+        LabelResource.from(labelResId),
+        IconResource.from(uri)
     )
 
 }
