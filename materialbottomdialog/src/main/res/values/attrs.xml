@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="dialogSheetBackground" format="reference|color" />
-    <attr name="dialogSheetTintColor" format="reference|color" />
+    <attr name="dialogSheetIconTintColor" format="reference|color" />
+    <attr name="dialogSheetLabelTintColor" format="reference|color" />
     <attr name="dialogSheetCornerRadius" format="dimension" />
     <attr name="dialogSheetLightNavigationBar" format="boolean" />
 </resources>

@@ -10,12 +10,14 @@ import com.hellmund.library.resources.LabelResource
  *
  * @param labelResource The [LabelResource] to use in the action.
  * @param iconResource The [IconResource] to use in the action. If null, no icon will be shown.
- * @param tintColor The tint color to use on the label and icon. If null, the default text color (?attr/dialogSheetTintColor) will be used.
+ * @param labelTintColor The tint color to use on the label.
+ * @param iconTintColor The tint color to use on the icon.
  */
 abstract class Action(
     val labelResource: LabelResource,
     val iconResource: IconResource? = null,
-    val tintColor: Int? = null
+    val labelTintColor: Int? = null,
+    val iconTintColor: Int? = null
 ) {
 
     val hasIcon: Boolean

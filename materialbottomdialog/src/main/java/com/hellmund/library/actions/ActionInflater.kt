@@ -33,9 +33,18 @@ class ActionInflater(private val context: Context) {
             textView.text = getActionText(context, action)
             setActionIcon(imageView, action)
 
-            action.tintColor?.let {
+            action.labelTintColor?.let {
                 textView.setTextColor(it)
+            }
+
+            action.iconTintColor?.let {
                 ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(it))
+            }
+
+            // Only apply the theme's icon tint if the icon is not loaded from a URI
+            val isUriResource = action.iconResource is IconResource.ImageURL
+            if (action.iconTintColor == null && isUriResource.not()) {
+                ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(R.attr.dialogSheetIconTintColor))
             }
 
             if (!preserveIconSpace) {
@@ -63,7 +72,10 @@ class ActionInflater(private val context: Context) {
             is IconResource.IconDrawable -> target.imageDrawable = action.iconResource.drawable
             is IconResource.IconBitmap -> target.setImageBitmap(action.iconResource.bitmap)
             is IconResource.ID -> target.setImageResource(action.iconResource.id)
-            is IconResource.ImageURL -> loadImage(target, action.iconResource.url)
+            is IconResource.ImageURL -> {
+                target.alpha = 1f
+                loadImage(target, action.iconResource.url)
+            }
         }
     }
 

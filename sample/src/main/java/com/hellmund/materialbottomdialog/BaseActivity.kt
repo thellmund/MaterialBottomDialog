@@ -71,7 +71,7 @@ abstract class BaseActivity : AppCompatActivity(), ContactsAdapter.OnContactSele
     }
 
     companion object {
-        private val IMAGE_URI = Uri.parse("https://avatars3.githubusercontent.com/u/11819826?s=460&v=4")
+        private val IMAGE_URI = Uri.parse("https://developer.android.com/static/images/home/android-10-year-game.png")
     }
 
 }

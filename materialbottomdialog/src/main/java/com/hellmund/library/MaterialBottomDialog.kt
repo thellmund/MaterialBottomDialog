@@ -1,8 +1,10 @@
 package com.hellmund.library
 
+import android.support.annotation.ColorInt
 import android.support.v7.app.AppCompatActivity
 import com.hellmund.library.actions.Action
 import com.hellmund.library.actions.Actionable
+import com.hellmund.library.resources.LabelResource
 
 /**
  * This class can be used to display a bottom sheet dialog. The dialog will be composed of [Action]s. You can add
@@ -18,7 +20,7 @@ class MaterialBottomDialog(
 
     private val actions = mutableListOf<Action>()
     private var showDragIndicator = false
-    private var title: String? = null
+    private var title: LabelResource? = null
 
     /**
      * Sets the provided [Action]s as the [Action]s to be displayed in the dialog.
@@ -55,8 +57,8 @@ class MaterialBottomDialog(
      *
      * @param titleResId The ID of the string resource to use as the title.
      */
-    fun setTitle(titleResId: Int): MaterialBottomDialog {
-        return setTitle(activity.getString(titleResId))
+    fun setTitle(titleResId: Int, @ColorInt tintColor: Int? = null): MaterialBottomDialog {
+        return setTitle(activity.getString(titleResId), tintColor)
     }
 
     /**
@@ -64,8 +66,8 @@ class MaterialBottomDialog(
      *
      * @param title The string to use as the title.
      */
-    fun setTitle(title: String): MaterialBottomDialog {
-        this.title = title
+    fun setTitle(title: String, @ColorInt tintColor: Int? = null): MaterialBottomDialog {
+        this.title = LabelResource.from(title, tintColor)
         return this
     }
 

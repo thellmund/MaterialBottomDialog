@@ -27,7 +27,7 @@
     </style>
 
     <style name="BottomDialogItemIcon">
-        <item name="android:tint">?attr/dialogSheetTintColor</item>
+        <!--<item name="android:tint">?attr/dialogSheetIconTintColor</item>-->
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_marginRight">@dimen/material_default_padding</item>
@@ -37,7 +37,7 @@
 
     <style name="BottomDialogItemLabel">
         <item name="android:alpha">0.87</item>
-        <item name="android:textColor">?attr/dialogSheetTintColor</item>
+        <item name="android:textColor">?attr/dialogSheetLabelTintColor</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
