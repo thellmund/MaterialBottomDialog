@@ -15,13 +15,13 @@ import com.hellmund.library.resources.LabelResource
  */
 abstract class Action(
     val labelResource: LabelResource,
-    val iconResource: IconResource? = null,
+    val iconResource: IconResource = IconResource.None,
     val labelTintColor: Int? = null,
     val iconTintColor: Int? = null
 ) {
 
     val hasIcon: Boolean
-        get() = iconResource != null
+        get() = (iconResource is IconResource.None).not()
 
     open fun onListItemInflated(itemView: View) {
         // Free ad space

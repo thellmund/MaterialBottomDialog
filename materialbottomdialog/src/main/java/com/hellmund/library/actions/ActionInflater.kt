@@ -80,6 +80,7 @@ class ActionInflater(private val context: Context) {
                 target.alpha = 1f
                 loadImage(target, action.iconResource.url)
             }
+            is IconResource.None -> Unit
         }
     }
 

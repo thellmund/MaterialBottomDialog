@@ -12,7 +12,7 @@ import com.hellmund.library.resources.LabelResource
  */
 class EnabledAction private constructor(
     labelResource: LabelResource,
-    iconResource: IconResource? = null,
+    iconResource: IconResource = IconResource.None,
     tintColor: Int? = null
 ) : Action(labelResource, iconResource, tintColor) {
 

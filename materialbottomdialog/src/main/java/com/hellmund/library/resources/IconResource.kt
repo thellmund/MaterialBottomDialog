@@ -15,17 +15,18 @@ sealed class IconResource {
     data class IconBitmap(val bitmap: Bitmap?) : IconResource()
     data class ImageURL(val url: String) : IconResource()
     data class ID(val id: Int) : IconResource()
+    object None : IconResource()
 
     companion object {
 
         @JvmStatic
-        fun from(resId: Int = 0) = IconResource.ID(resId)
+        fun from(resId: Int = 0) = if (resId != 0) IconResource.ID(resId) else IconResource.None
 
         @JvmStatic
-        fun from(drawable: Drawable?) = drawable?.let { IconResource.IconDrawable(drawable) }
+        fun from(drawable: Drawable?) = drawable?.let { IconResource.IconDrawable(drawable) } ?: IconResource.None
 
         @JvmStatic
-        fun from(bitmap: Bitmap?) = bitmap?.let { IconResource.IconBitmap(bitmap) }
+        fun from(bitmap: Bitmap?) = bitmap?.let { IconResource.IconBitmap(bitmap) } ?: IconResource.None
 
         @JvmStatic
         fun from(uri: Uri) = IconResource.ImageURL(uri.toString())
