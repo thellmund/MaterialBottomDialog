@@ -1,8 +1,9 @@
-package com.hellmund.materialbottomdialog
+package com.hellmund.materialbottomdialog.data
 
 import com.hellmund.library.actions.Action
 import com.hellmund.library.actions.Actionable
 import com.hellmund.library.actions.EnabledAction
+import com.hellmund.materialbottomdialog.R
 
 data class Contact(
     val id: Int,

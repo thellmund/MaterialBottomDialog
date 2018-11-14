@@ -11,11 +11,10 @@ import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
 import com.hellmund.library.actions.Action
-import com.hellmund.library.actions.ActionInflater
 import com.hellmund.library.resources.LabelResource
-import kotlinx.android.synthetic.main.bottom_sheet_title.view.*
+import kotlinx.android.synthetic.main.bottom_sheet_title.*
 
-class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
+internal class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
 
     private lateinit var actions: List<Action>
 
@@ -24,7 +23,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
 
     private var showDragIndicator = false
     private var dialogTitleResource: LabelResource? = null
-    private var dialogTheme: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val contentView = LinearLayout(context).apply {
@@ -37,28 +35,7 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
             contentView.addView(dragIndicatorView)
         }
 
-        dialogTitleResource?.let { resource ->
-            val title = when (resource) {
-                is LabelResource.Value -> resource.value
-                is LabelResource.ID -> requireContext().getString(resource.value)
-            }
-
-            if (title.isBlank()) {
-                return@let
-            }
-
-            // TODO
-            val titleTint = when (resource) {
-                is LabelResource.Value -> resource.tintColor
-                is LabelResource.ID -> resource.tintColor
-            }
-
-            val titleView = inflater.inflate(R.layout.bottom_sheet_title, contentView, false).apply {
-                textView.text = title
-                titleTint?.let { textView.setTextColor(it) }
-            }
-            contentView.addView(titleView)
-        }
+        dialogTitleResource?.let { addDialogTitleView(inflater, contentView, it) }
 
         val itemsContainer = LinearLayout(context).apply {
             layoutParams = FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
@@ -83,6 +60,30 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
         return contentView
     }
 
+    private fun addDialogTitleView(inflater: LayoutInflater, contentView: ViewGroup, titleResource: LabelResource) {
+        val title = when (titleResource) {
+            is LabelResource.Value -> titleResource.value
+            is LabelResource.ID -> requireContext().getString(titleResource.value)
+        }
+
+        if (title.isBlank()) {
+            return
+        }
+
+        // TODO
+        val titleTint = when (titleResource) {
+            is LabelResource.Value -> titleResource.tintColor
+            is LabelResource.ID -> titleResource.tintColor
+        }
+
+        val titleView = inflater.inflate(R.layout.bottom_sheet_title, contentView, false).apply {
+            textView.text = title
+            titleTint?.let { textView.setTextColor(it) }
+        }
+
+        contentView.addView(titleView)
+    }
+
     private fun handleDialogItemClick(position: Int) {
         onClickListener?.invoke(position)
         dismiss()
@@ -100,8 +101,7 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
             onClickListener: ((Int) -> Unit)? = null,
             onCancelListener: (() -> Unit)? = null,
             showDragIndicator: Boolean = false,
-            title: LabelResource? = null,
-            theme: Int? = null
+            title: LabelResource? = null
         ): MaterialBottomDialogFragment {
             return MaterialBottomDialogFragment().apply {
                 this.actions = actions
@@ -109,7 +109,6 @@ class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
                 this.onCancelListener = onCancelListener
                 this.showDragIndicator = showDragIndicator
                 this.dialogTitleResource = title
-                this.dialogTheme = theme
             }
         }
 

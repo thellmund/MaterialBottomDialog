@@ -11,8 +11,7 @@ import com.hellmund.library.resources.LabelResource
  * listeners for being notified when an [Action] is selected or when the dialog is dismissed by the user.
  */
 class MaterialBottomDialog(
-    private val activity: AppCompatActivity,
-    private val theme: Int? = null
+    private val activity: AppCompatActivity
 ) {
 
     private var onClickListener: ((Int) -> Unit)? = null
@@ -57,8 +56,8 @@ class MaterialBottomDialog(
      *
      * @param titleResId The ID of the string resource to use as the title.
      */
-    fun setTitle(titleResId: Int, @ColorInt tintColor: Int? = null): MaterialBottomDialog {
-        return setTitle(activity.getString(titleResId), tintColor)
+    fun setTitle(titleResId: Int, @ColorInt titleTintColor: Int? = null): MaterialBottomDialog {
+        return setTitle(activity.getString(titleResId), titleTintColor)
     }
 
     /**
@@ -66,8 +65,8 @@ class MaterialBottomDialog(
      *
      * @param title The string to use as the title.
      */
-    fun setTitle(title: String, @ColorInt tintColor: Int? = null): MaterialBottomDialog {
-        this.title = LabelResource.from(title, tintColor)
+    fun setTitle(title: String, @ColorInt titleTintColor: Int? = null): MaterialBottomDialog {
+        this.title = LabelResource.from(title, titleTintColor)
         return this
     }
 
@@ -116,7 +115,7 @@ class MaterialBottomDialog(
      */
     fun show() {
         val fragment = MaterialBottomDialogFragment.newInstance(
-            actions, onClickListener, onCancelListener, showDragIndicator, title, theme)
+            actions, onClickListener, onCancelListener, showDragIndicator, title)
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 
@@ -131,7 +130,7 @@ class MaterialBottomDialog(
     companion object {
 
         @JvmStatic
-        fun make(activity: AppCompatActivity, theme: Int? = null) = MaterialBottomDialog(activity, theme)
+        fun make(activity: AppCompatActivity) = MaterialBottomDialog(activity)
 
     }
 

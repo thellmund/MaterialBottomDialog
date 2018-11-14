@@ -1,4 +1,4 @@
-package com.hellmund.materialbottomdialog
+package com.hellmund.materialbottomdialog.data
 
 object ContactsRepository {
 

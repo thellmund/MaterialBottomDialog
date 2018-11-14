@@ -1,25 +1,22 @@
-package com.hellmund.library.actions
+package com.hellmund.library
 
 import android.content.Context
 import android.content.res.ColorStateList
 import android.support.v4.widget.ImageViewCompat
 import android.view.View
 import android.widget.ImageView
-import com.hellmund.library.R
-import com.hellmund.library.imageDrawable
+import com.hellmund.library.actions.Action
 import com.hellmund.library.resources.IconResource
 import com.hellmund.library.resources.LabelResource
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_bottom_dialog.view.*
-
-
 
 /**
  * This class is responsible for inflating an [Action] into the final [com.hellmund.library.MaterialBottomDialog].
  *
  * @param context The current [Context]
  */
-class ActionInflater(private val context: Context) {
+internal class ActionInflater(private val context: Context) {
 
     /**
      * Inflates the provided [Action] and returns the resulting [View]. It also sets the provided function to be
@@ -35,20 +32,15 @@ class ActionInflater(private val context: Context) {
             textView.text = getActionText(context, action)
             setActionIcon(imageView, action)
 
-            action.labelTintColor?.let {
-                textView.setTextColor(it)
-            }
-
-            action.iconTintColor?.let {
-                ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(it))
-            }
+            action.labelTintColor?.let { textView.setTextColor(it) }
+            action.iconTintColor?.let { ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(it)) }
 
             // Only apply the theme's icon tint if the icon is not loaded from a URI
             val isUriResource = action.iconResource is IconResource.ImageURL
             if (action.iconTintColor == null && isUriResource.not()) {
-                val a = context.theme.obtainStyledAttributes(intArrayOf(R.attr.dialogSheetIconTintColor))
-                ImageViewCompat.setImageTintList(imageView, a.getColorStateList(0))
-                a.recycle()
+                context.theme.useColorStateList(R.attr.dialogSheetIconTintColor) {
+                    ImageViewCompat.setImageTintList(imageView, it)
+                }
             }
 
             if (!preserveIconSpace) {

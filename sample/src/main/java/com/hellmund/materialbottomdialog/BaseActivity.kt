@@ -11,6 +11,8 @@ import android.widget.Toast
 import com.hellmund.library.MaterialBottomDialog
 import com.hellmund.library.actions.DisabledAction
 import com.hellmund.library.actions.EnabledAction
+import com.hellmund.materialbottomdialog.data.Contact
+import com.hellmund.materialbottomdialog.data.ContactsRepository
 import kotlinx.android.synthetic.main.activity_light_mode.*
 
 abstract class BaseActivity : AppCompatActivity(), ContactsAdapter.OnContactSelectedListener {

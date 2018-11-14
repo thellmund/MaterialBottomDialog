@@ -13,51 +13,68 @@ import com.hellmund.library.resources.LabelResource
 class EnabledAction private constructor(
     labelResource: LabelResource,
     iconResource: IconResource = IconResource.None,
-    tintColor: Int? = null
-) : Action(labelResource, iconResource, tintColor) {
+    labelTintColor: Int? = null,
+    iconTintColor: Int? = null
+) : Action(labelResource, iconResource, labelTintColor, iconTintColor) {
 
     constructor(label: String) : this(LabelResource.from(label))
 
     constructor(labelResId: Int) : this(LabelResource.from(labelResId))
 
-    constructor(label: String, iconResId: Int = 0) : this(
+    constructor(label: String, iconResId: Int = 0, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(label),
-        IconResource.from(iconResId)
+        IconResource.from(iconResId),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(label: String, icon: Drawable? = null) : this(
+    constructor(label: String, icon: Drawable? = null, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(label),
-        IconResource.from(icon)
+        IconResource.from(icon),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(label: String, icon: Bitmap? = null) : this(
+    constructor(label: String, icon: Bitmap? = null, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(label),
-        IconResource.from(icon)
+        IconResource.from(icon),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(label: String, uri: Uri) : this(
+    constructor(label: String, uri: Uri, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(label),
-        IconResource.from(uri)
+        IconResource.from(uri),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(labelResId: Int, iconResId: Int = 0) : this(
+    constructor(labelResId: Int, iconResId: Int = 0, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(labelResId),
-        IconResource.from(iconResId)
+        IconResource.from(iconResId),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(labelResId: Int, icon: Drawable? = null) : this(
+    constructor(labelResId: Int, icon: Drawable? = null, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(labelResId),
-        IconResource.from(icon)
+        IconResource.from(icon),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(labelResId: Int, icon: Bitmap? = null) : this(
+    constructor(labelResId: Int, icon: Bitmap? = null, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(labelResId),
-        IconResource.from(icon)
+        IconResource.from(icon),
+        labelTintColor,
+        iconTintColor
     )
 
-    constructor(labelResId: Int, uri: Uri) : this(
+    constructor(labelResId: Int, uri: Uri, labelTintColor: Int? = null, iconTintColor: Int? = null) : this(
         LabelResource.from(labelResId),
-        IconResource.from(uri)
+        IconResource.from(uri),
+        labelTintColor,
+        iconTintColor
     )
 
 }
