@@ -12,7 +12,7 @@ import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
 import com.hellmund.library.actions.Action
 import com.hellmund.library.resources.LabelResource
-import kotlinx.android.synthetic.main.bottom_sheet_title.*
+import kotlinx.android.synthetic.main.bottom_sheet_title.view.*
 
 internal class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment() {
 
@@ -76,10 +76,9 @@ internal class MaterialBottomDialogFragment : RoundedBottomSheetDialogFragment()
             is LabelResource.ID -> titleResource.tintColor
         }
 
-        val titleView = inflater.inflate(R.layout.bottom_sheet_title, contentView, false).apply {
-            textView.text = title
-            titleTint?.let { textView.setTextColor(it) }
-        }
+        val titleView = inflater.inflate(R.layout.bottom_sheet_title, contentView, false)
+        titleView.textView.text = title
+        titleTint?.let { titleView.textView.setTextColor(it) }
 
         contentView.addView(titleView)
     }
