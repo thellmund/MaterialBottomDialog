@@ -1,7 +1,7 @@
 package com.hellmund.library
 
 import android.support.annotation.ColorInt
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.FragmentActivity
 import com.hellmund.library.actions.Action
 import com.hellmund.library.actions.Actionable
 import com.hellmund.library.resources.LabelResource
@@ -11,7 +11,7 @@ import com.hellmund.library.resources.LabelResource
  * listeners for being notified when an [Action] is selected or when the dialog is dismissed by the user.
  */
 class MaterialBottomDialog(
-    private val activity: AppCompatActivity
+    private val activity: FragmentActivity
 ) {
 
     private var onClickListener: ((Int) -> Unit)? = null
@@ -130,7 +130,7 @@ class MaterialBottomDialog(
     companion object {
 
         @JvmStatic
-        fun make(activity: AppCompatActivity) = MaterialBottomDialog(activity)
+        fun make(activity: FragmentActivity) = MaterialBottomDialog(activity)
 
     }
 
